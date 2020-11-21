@@ -1,6 +1,6 @@
 const { program } = require('commander');
 program.version('0.0.1');
-
+const api = require("./index")
 
 
 program
@@ -16,6 +16,13 @@ program
     .action((...content) => {
         const words = content.slice(1)[0].join(" ")
         console.log(words);
+    });
+
+program
+    .command('add <task>')
+    .description('add something')
+    .action((task) => {
+        api.add(task)
     });
 
 program.parse(process.argv);
